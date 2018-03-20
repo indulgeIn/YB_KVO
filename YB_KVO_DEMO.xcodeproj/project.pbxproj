@@ -13,6 +13,7 @@
 		70117C7E205F5B2C0097767E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70117C7D205F5B2C0097767E /* Assets.xcassets */; };
 		70117C81205F5B2C0097767E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70117C7F205F5B2C0097767E /* LaunchScreen.storyboard */; };
 		70117C84205F5B2C0097767E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70117C83205F5B2C0097767E /* main.m */; };
+		70117C8D205F94B30097767E /* NSObject+YB_KVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 70117C8C205F94B30097767E /* NSObject+YB_KVO.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		70117C80205F5B2C0097767E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70117C82205F5B2C0097767E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70117C83205F5B2C0097767E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		70117C8B205F94B30097767E /* NSObject+YB_KVO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+YB_KVO.h"; sourceTree = "<group>"; };
+		70117C8C205F94B30097767E /* NSObject+YB_KVO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YB_KVO.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 		70117C73205F5B2C0097767E /* YB_KVO_DEMO */ = {
 			isa = PBXGroup;
 			children = (
+				70117C8A205F94560097767E /* YB_KVO */,
 				70117C74205F5B2C0097767E /* AppDelegate.h */,
 				70117C75205F5B2C0097767E /* AppDelegate.m */,
 				70117C77205F5B2C0097767E /* ViewController.h */,
@@ -70,6 +74,15 @@
 			);
 			path = YB_KVO_DEMO;
 			sourceTree = "<group>";
+		};
+		70117C8A205F94560097767E /* YB_KVO */ = {
+			isa = PBXGroup;
+			children = (
+				70117C8B205F94B30097767E /* NSObject+YB_KVO.h */,
+				70117C8C205F94B30097767E /* NSObject+YB_KVO.m */,
+			);
+			path = YB_KVO;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -143,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70117C79205F5B2C0097767E /* ViewController.m in Sources */,
+				70117C8D205F94B30097767E /* NSObject+YB_KVO.m in Sources */,
 				70117C84205F5B2C0097767E /* main.m in Sources */,
 				70117C76205F5B2C0097767E /* AppDelegate.m in Sources */,
 			);
