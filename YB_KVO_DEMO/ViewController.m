@@ -49,11 +49,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew context:nil];
+    [self.testObj addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew context:nil];
 //    [self yb_addObserver:self forKeyPath:@"testObj" options:NSKeyValueObservingOptionNew context:nil];
     
 //    self.number = 2;
 //    self.testObj = [TestObj new];
+//    self.testObj.name = @"a";
     self.testObj.age = 10;
 }
 

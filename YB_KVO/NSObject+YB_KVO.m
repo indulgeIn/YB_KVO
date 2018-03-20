@@ -44,7 +44,9 @@ void yb_kvo_setter (id observer, SEL sel, id p0) {
     ((void(*)(struct objc_super *, SEL, id)) objc_msgSendSuper)(&sup, sel, p0);
     
     //回调相关
-    
+    if ([observer respondsToSelector:@selector(yb_observeValueForKeyPath:ofObject:change:context:)]) {
+        [observer yb_observeValueForKeyPath:@"test" ofObject:observer change:@{} context:nil];
+    }
     
 }
 
