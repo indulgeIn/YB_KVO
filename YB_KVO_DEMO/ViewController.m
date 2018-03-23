@@ -13,18 +13,19 @@
 
 @interface TestObj:NSObject
 @property (nonatomic, assign) NSInteger age;
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *love;
 @end
 @implementation TestObj
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        [self addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew context:nil];
+
     }
     return self;
 }
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+- (void)yb_observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     NSLog(@"%@ --- keyPath: %@, object: %@, change: %@, context: %@", self, keyPath, object, change, context);
 }
 - (void)setAge:(NSInteger)age {
@@ -49,21 +50,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self addObserver:self forKeyPath:@"testObj.name" options:NSKeyValueObservingOptionNew context:nil];
-    [self yb_addObserver:self forKeyPath:@"testObj.name" options:NSKeyValueObservingOptionNew context:nil];
     
-//    self.number = 2;
-    self.testObj = [TestObj new];
-//    self.testObj.name = @"a";
-//    self.testObj.age = 10;
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    NSLog(@"%@ --- keyPath: %@, object: %@, change: %@, context: %@", self, keyPath, object, change, context);
+    [self yb_addObserver:self forKeyPath:@"testObj.love" options:YB_NSKeyValueObservingOptionPrior|YB_NSKeyValueObservingOptionNew|YB_NSKeyValueObservingOptionOld context:nil];
+    [self yb_addObserver:self.testObj forKeyPath:@"testObj.love" options:YB_NSKeyValueObservingOptionNew|YB_NSKeyValueObservingOptionOld context:nil];
+    
+//    self.testObj = [TestObj new];
+    self.testObj.love = @"a";
+    
+    
+    [self yb_removeObserver:self forKeyPath:@"testObj.love" context:nil];
+    
+    [self yb_removeObserver:self.testObj forKeyPath:@"testObj.love" context:nil];
+    
 }
 
 - (void)yb_observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    NSLog(@"%@ --- keyPath: %@, object: %@, change: %@, context: %@", self, keyPath, object, change, context);
+    NSLog(@"yb_ %@ --- keyPath: %@, object: %@, change: %@, context: %@", self, keyPath, object, change, context);
 }
 
 #pragma mark getter setter
