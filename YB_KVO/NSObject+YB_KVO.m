@@ -185,10 +185,11 @@ static void yb_kvo_setter (id taget, SEL sel, id p0) {
 }
 
 - (void)yb_creatSubClassWithTarget:(id)target {
-    //若 isa 指向是否已经是派生类
+    //判断 isa 指向是否已经是派生类
     Class nowClass = object_getClass(target);
+    NSString *originClass_name = NSStringFromClass([target class]);
     NSString *nowClass_name = NSStringFromClass(nowClass);
-    if ([nowClass_name hasPrefix:kPrefixOfYBKVO]) {
+    if ([[nowClass_name stringByReplacingOccurrencesOfString:originClass_name withString:@""] isEqualToString:kPrefixOfYBKVO]) {
         return;
     }
     
