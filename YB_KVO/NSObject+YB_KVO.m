@@ -53,7 +53,7 @@ static NSString * getterNameFromSetterName(NSString *setterName) {
     return getterName;
 }
 
-static inline int classHasSel(Class class, SEL sel) {
+static bool classHasSel(Class class, SEL sel) {
     unsigned int outCount = 0;
     Method *methods = class_copyMethodList(class, &outCount);
     for (int i = 0; i < outCount; i++) {
@@ -61,11 +61,11 @@ static inline int classHasSel(Class class, SEL sel) {
         SEL mSel = method_getName(method);
         if (mSel == sel) {
             free(methods);
-            return 1;
+            return true;
         }
     }
     free(methods);
-    return 0;
+    return false;
 }
 
 static void callBack (id taget, id nValue, id oValue, NSString *getterName, BOOL notificationIsPrior) {
